@@ -1,6 +1,13 @@
-<h1>Cocktail <%= @cocktail.name %> </h1>
 
-  <h1>Liste des doses</h1>
+<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%=  cl_image_path @cocktail.photo %>');">
+                <div class="card-description">
+                  <h2><%= @cocktail.name %></h2>
+                </div>
+                <%= link_to "", cocktail_path(@cocktail), class: 'card-link' %>
+</div>
+
+
+  <h1>Ingredients List</h1>
     <ul>
       <% @cocktail.doses.each do |dose| %>
       <li> <%= dose.description %> de <%= dose.ingredient.name%></li>
@@ -8,9 +15,10 @@
     </ul>
   <div>
   <%= link_to "add ingredient", new_cocktail_dose_path(@cocktail) , class: "btn btn-primary"%>
-  <%= link_to "back to cocktails", cocktails_path , class: "btn btn-primary"%>
-  <%= link_to "delete", cocktail_path(@cocktail), method: :delete, data: { confirm: "Are you sure?" } , class: "btn btn-primary"%>
-  </div>
 
+  <%= link_to "delete the cocktail", cocktail_path(@cocktail), method: :delete, data: { confirm: "Are you sure?" } , class: "btn btn-danger"%>
+  <%= link_to "back to cocktails", cocktails_path , class: "btn btn-secondary"%>
+  </div>
+</div>
 
 
