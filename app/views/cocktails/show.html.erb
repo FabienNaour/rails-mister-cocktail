@@ -7,7 +7,10 @@
       <% end %>
     </ul>
   <div>
-  <%= link_to "add ingredient", cocktails_path , class: "btn btn-primary"%>
+  <%= link_to "add ingredient", new_cocktail_dose_path(@cocktail) , class: "btn btn-primary"%>
   <%= link_to "back to cocktails", cocktails_path , class: "btn btn-primary"%>
-  <%= link_to "delete", cocktail_path(@cocktail), method: "delete" , class: "btn btn-primary"%>
+  <%= link_to "delete", cocktail_path(@cocktail), method: :delete, data: { confirm: "Are you sure?" } , class: "btn btn-primary"%>
   </div>
+
+
+

@@ -22,23 +22,19 @@ puts '2/3 Cleaning database ingredient...'
 Ingredient.destroy_all
 puts 'Creating ingredient...'
 
-url = "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
-
-jason = open(url).read
-parse = JSON.parse(jason)
-
-ingredients = parse["drinks"]
-
-ingredients.each do |ingredient|
- Ingredient.create(name: ingredient['strIngredient1'])
-end
-
+# example DATA
 # {
 # "drinks": [
 # {
 # "strIngredient1": "Light rum"
 # },
-
+url = "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
+jason = open(url).read
+parse = JSON.parse(jason)
+ingredients = parse["drinks"]
+ingredients.each do |ingredient|
+ Ingredient.create(name: ingredient['strIngredient1'])
+end
 
 ing1 = Ingredient.create(name: "lemon")
 ing2 = Ingredient.create(name: "ice")
